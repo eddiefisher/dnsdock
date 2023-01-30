@@ -37,3 +37,5 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
 
 FROM alpine
 COPY --from=build /dnsdock/build/dnsdock /bin
+
+ENTRYPOINT ["dnsdock"]
