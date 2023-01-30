@@ -11,7 +11,6 @@ package main
 import (
 	"crypto/tls"
 	"crypto/x509"
-	"io/ioutil"
 	"os"
 
 	"github.com/eddiefisher/dnsdock/pkg/core"
@@ -32,8 +31,8 @@ func main() {
 		logger.Fatalf(err.Error())
 	}
 	verbosity := 0
-	if config.Quiet == false {
-		if config.Verbose == false {
+	if !config.Quiet {
+		if !config.Verbose {
 			verbosity = 1
 		} else {
 			verbosity = 2
@@ -56,7 +55,7 @@ func main() {
 			MinVersion:   tls.VersionTLS12,
 			Certificates: []tls.Certificate{clientCert},
 		}
-		pemData, err := ioutil.ReadFile(config.TlsCaCert)
+		pemData, err := os.ReadFile(config.TlsCaCert)
 		if err == nil {
 			rootCert := x509.NewCertPool()
 			rootCert.AppendCertsFromPEM(pemData)

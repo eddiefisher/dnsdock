@@ -276,6 +276,7 @@ func TestDNSRequestMatchNamesWithDots(t *testing.T) {
 	}
 }
 
+// TODO: not working
 func _TestGetExpandedID(t *testing.T) {
 	server := NewDNSServer(utils.NewConfig())
 
