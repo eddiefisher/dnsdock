@@ -59,7 +59,7 @@ RUN mkdir /tmp/output
 WORKDIR /go/src/github.com/eddiefisher/dnsdock
 RUN godep restore
 ENV GOARCH={{$ARCH}}
-WORKDIR /go/src/github.com/eddiefisher/dnsdock/src
+WORKDIR /go/src/github.com/eddiefisher/dnsdock/pkg
 ATTACH sh
 RUN govvv build -o /tmp/output/dnsdock
 RUN golint -set_exit_status

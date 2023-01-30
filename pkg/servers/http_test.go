@@ -15,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/eddiefisher/dnsdock/src/utils"
+	"github.com/eddiefisher/dnsdock/pkg/utils"
 )
 
 func TestServiceRequests(t *testing.T) {

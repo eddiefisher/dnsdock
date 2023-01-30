@@ -19,8 +19,8 @@ import (
 	"github.com/docker/engine-api/client"
 	"github.com/docker/engine-api/types"
 	eventtypes "github.com/docker/engine-api/types/events"
-	"github.com/eddiefisher/dnsdock/src/servers"
-	"github.com/eddiefisher/dnsdock/src/utils"
+	"github.com/eddiefisher/dnsdock/pkg/servers"
+	"github.com/eddiefisher/dnsdock/pkg/utils"
 	events "github.com/vdemeester/docker-events"
 	"golang.org/x/net/context"
 )

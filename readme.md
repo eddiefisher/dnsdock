@@ -51,7 +51,7 @@ go get -v github.com/tools/godep
 go get -d -v https://github.com/eddiefisher/dnsdock
 cd ${GOPATH}/src/github.com/eddiefisher/dnsdock
 godep restore
-cd ${GOPATH}/src/github.com/eddiefisher/dnsdock/src
+cd ${GOPATH}/src/github.com/eddiefisher/dnsdock/pkg
 go build -o ${GOPATH}/bin/dnsdock
 ```
 

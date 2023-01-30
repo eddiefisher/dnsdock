@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/eddiefisher/dnsdock/src/utils"
+	"github.com/eddiefisher/dnsdock/pkg/utils"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 

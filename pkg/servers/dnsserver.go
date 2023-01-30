@@ -17,7 +17,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/eddiefisher/dnsdock/src/utils"
+	"github.com/eddiefisher/dnsdock/pkg/utils"
 	"github.com/miekg/dns"
 )
 

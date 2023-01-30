@@ -14,9 +14,9 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/eddiefisher/dnsdock/src/core"
-	"github.com/eddiefisher/dnsdock/src/servers"
-	"github.com/eddiefisher/dnsdock/src/utils"
+	"github.com/eddiefisher/dnsdock/pkg/core"
+	"github.com/eddiefisher/dnsdock/pkg/servers"
+	"github.com/eddiefisher/dnsdock/pkg/utils"
 	"github.com/op/go-logging"
 )
 

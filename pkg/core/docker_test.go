@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/eddiefisher/dnsdock/src/servers"
+	"github.com/eddiefisher/dnsdock/pkg/servers"
 )
 
 func TestGetImageName(t *testing.T) {
