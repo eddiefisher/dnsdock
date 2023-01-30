@@ -9,12 +9,13 @@
 package servers
 
 import (
-	"github.com/aacebedo/dnsdock/src/utils"
-	"github.com/miekg/dns"
 	"net"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/eddiefisher/dnsdock/src/utils"
+	"github.com/miekg/dns"
 )
 
 func TestDNSResponse(t *testing.T) {
@@ -222,7 +223,7 @@ func TestDNSRequestMatch(t *testing.T) {
 		t.Log(input.query, input.domain)
 
 		actual := 0
-		for _ = range server.queryServices(input.query) {
+		for range server.queryServices(input.query) {
 			actual++
 		}
 
@@ -265,7 +266,7 @@ func TestDNSRequestMatchNamesWithDots(t *testing.T) {
 
 		t.Log(input.query, input.domain)
 		actual := 0
-		for _ = range server.queryServices(input.query) {
+		for range server.queryServices(input.query) {
 			actual++
 		}
 
@@ -275,7 +276,7 @@ func TestDNSRequestMatchNamesWithDots(t *testing.T) {
 	}
 }
 
-func TestgetExpandedID(t *testing.T) {
+func _TestGetExpandedID(t *testing.T) {
 	server := NewDNSServer(utils.NewConfig())
 
 	server.AddService("416261e74515b7dd1dbd55f35e8625b063044f6ddf74907269e07e9f142bc0df", Service{})

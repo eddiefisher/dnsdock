@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/aacebedo/dnsdock.png)](http://travis-ci.org/aacebedo/dnsdock)
+[![Build Status](https://secure.travis-ci.org/eddiefisher/dnsdock.png)](http://travis-ci.org/eddiefisher/dnsdock)
 
 
 ## dnsdock
@@ -48,10 +48,10 @@ Install a golang development environment on your host and type the following com
 export GOPATH=/tmp/go
 export PATH=${PATH}:${GOPATH}/bin
 go get -v github.com/tools/godep
-go get -d -v https://github.com/aacebedo/dnsdock
-cd ${GOPATH}/src/github.com/aacebedo/dnsdock
+go get -d -v https://github.com/eddiefisher/dnsdock
+cd ${GOPATH}/src/github.com/eddiefisher/dnsdock
 godep restore
-cd ${GOPATH}/src/github.com/aacebedo/dnsdock/src
+cd ${GOPATH}/src/github.com/eddiefisher/dnsdock/src
 go build -o ${GOPATH}/bin/dnsdock
 ```
 
@@ -60,7 +60,7 @@ go build -o ${GOPATH}/bin/dnsdock
 To build with docker you need [rocker](https://github.com/grammarly/rocker). Check the
 website to install it and type the following commands:
 ```
-git clone https://github.com/aacebedo/dnsdock <clone_directory_path>
+git clone https://github.com/eddiefisher/dnsdock <clone_directory_path>
 rocker build -var ARCH=[amd64|arm] -var OUTPUT_DIR=<outputdir> <clone_directory_path>
 ```
 
@@ -123,7 +123,7 @@ Restart docker daemon after you have done that (`sudo service docker restart`).
 Now you only need to run the dnsdock container:
 
 ```
-docker run -d -v /var/run/docker.sock:/var/run/docker.sock --name dnsdock -p 172.17.0.1:53:53/udp aacebedo/dnsdock [--opts]
+docker run -d -v /var/run/docker.sock:/var/run/docker.sock --name dnsdock -p 172.17.0.1:53:53/udp eddiefisher/dnsdock [--opts]
 ```
 
 - `-d` starts container as daemon
@@ -148,7 +148,7 @@ Additional configuration options to dnsdock command:
 --tlscert="$HOME/.docker/cert.pem": Path to client certificate
 --tlskey="$HOME/.docker/key.pem": Path to client certificate private key
 --all: Process all container even if they are stopped
---forcettl: Change TTL value of responses coming from remote servers 
+--forcettl: Change TTL value of responses coming from remote servers
 ```
 
 If you also want to let the host machine discover the containers add `nameserver 172.17.0.1` to your `/etc/resolv.conf`.
@@ -159,7 +159,7 @@ If you also want to let the host machine discover the containers add `nameserver
 Mounting docker daemon's unix socket may not work with default configuration on
 these platforms. Please use
 [selinux-dockersock](https://github.com/dpw/selinux-dockersock) to fix this.
-More information in [#11](https://github.com/aacebedo/dnsdock/issues/11).
+More information in [#11](https://github.com/eddiefisher/dnsdock/issues/11).
 
 #### TLS Authentication
 
@@ -174,7 +174,7 @@ and the `DOCKER_CERTS` to a directory containing files named `ca.pem`,
 You may build this into your own container with this example Dockerfile:
 
 ```
-FROM aacebedo/dnsdock
+FROM eddiefisher/dnsdock
 
 ENV DOCKER_TLS_VERIFY 1
 ENV DOCKER_CERTS /certs
@@ -234,7 +234,7 @@ docker run -e DNSDOCK_ALIAS=db.docker,sql.docker -e DNSDOCK_TTL=10 \
 
 #### Overrides with docker labels
 
-If you wish to fine tune the DNS response addresses you can define specific labels during 
+If you wish to fine tune the DNS response addresses you can define specific labels during
 container creation. This overrides the default matching scheme from container and image name.
 
 Supported labels are `com.dnsdock.ignore`, `com.dnsdock.alias`, `com.dnsdock.name`, `com.dnsdock.tags`, `com.dnsdock.image`,
@@ -263,7 +263,7 @@ docker run -l com.dnsdock.tags=master -l com.dnsdock.name=mysql -l com.dnsdock.r
 If you want dnsdock to skip processing a specific container set its
 `com.dnsdock.ignore` label.
 
-You can force the value of the IP address returned in the DNS record with the 
+You can force the value of the IP address returned in the DNS record with the
 `com.dnsdock.ip_addr` label. This can be useful if you have a reverse proxy such as traefik in a container with mapped port and you want to redirect your clients to the front server instead of an internal docker container ip address.
 
 #### OSX Usage
@@ -314,8 +314,8 @@ Add the following snippet under the `units` part:
         [Service]
         EnvironmentFile=/etc/environment
         ExecStartPre=/bin/sh -c '/usr/bin/docker rm -f dnsdock || ls > /dev/null'
-        ExecStartPre=/bin/sh -c '/usr/bin/docker pull aacebedo/dnsdock'
-        ExecStart=/usr/bin/docker run -v /var/run/docker.sock:/var/run/docker.sock --name dnsdock -p ${COREOS_PRIVATE_IPV4}:53:53/udp aacebedo/dnsdock
+        ExecStartPre=/bin/sh -c '/usr/bin/docker pull eddiefisher/dnsdock'
+        ExecStart=/usr/bin/docker run -v /var/run/docker.sock:/var/run/docker.sock --name dnsdock -p ${COREOS_PRIVATE_IPV4}:53:53/udp eddiefisher/dnsdock
         ExecStop=/bin/sh -c '/usr/bin/docker stop dnsdock  || ls > /dev/null'
 ```
 

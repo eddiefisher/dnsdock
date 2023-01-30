@@ -11,15 +11,17 @@ package main
 import (
 	"crypto/tls"
 	"crypto/x509"
-	"github.com/aacebedo/dnsdock/src/core"
-	"github.com/aacebedo/dnsdock/src/servers"
-	"github.com/aacebedo/dnsdock/src/utils"
-	"github.com/op/go-logging"
 	"io/ioutil"
 	"os"
+
+	"github.com/eddiefisher/dnsdock/src/core"
+	"github.com/eddiefisher/dnsdock/src/servers"
+	"github.com/eddiefisher/dnsdock/src/utils"
+	"github.com/op/go-logging"
 )
+
 // GitSummary contains the version number
-var GitSummary string 
+var GitSummary string
 var logger = logging.MustGetLogger("dnsdock.main")
 
 func main() {

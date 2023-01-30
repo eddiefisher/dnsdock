@@ -9,12 +9,13 @@
 package servers
 
 import (
-	"github.com/aacebedo/dnsdock/src/utils"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/eddiefisher/dnsdock/src/utils"
 )
 
 func TestServiceRequests(t *testing.T) {
@@ -66,7 +67,7 @@ func TestServiceRequests(t *testing.T) {
 			continue
 		}
 
-		actual, err := ioutil.ReadAll(resp.Body)
+		actual, err := io.ReadAll(resp.Body)
 		if err != nil {
 			t.Error(err)
 		}

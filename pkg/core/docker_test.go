@@ -9,9 +9,10 @@
 package core
 
 import (
-	"github.com/aacebedo/dnsdock/src/servers"
 	"reflect"
 	"testing"
+
+	"github.com/eddiefisher/dnsdock/src/servers"
 )
 
 func TestGetImageName(t *testing.T) {

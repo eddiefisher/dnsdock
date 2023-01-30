@@ -11,17 +11,18 @@ package core
 import (
 	"crypto/tls"
 	"errors"
-	"github.com/aacebedo/dnsdock/src/servers"
-	"github.com/aacebedo/dnsdock/src/utils"
-	"github.com/docker/engine-api/client"
-	"github.com/docker/engine-api/types"
-	eventtypes "github.com/docker/engine-api/types/events"
-	"github.com/vdemeester/docker-events"
-	"golang.org/x/net/context"
 	"net"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/docker/engine-api/client"
+	"github.com/docker/engine-api/types"
+	eventtypes "github.com/docker/engine-api/types/events"
+	"github.com/eddiefisher/dnsdock/src/servers"
+	"github.com/eddiefisher/dnsdock/src/utils"
+	events "github.com/vdemeester/docker-events"
+	"golang.org/x/net/context"
 )
 
 // DockerManager is the entrypoint to the docker daemon

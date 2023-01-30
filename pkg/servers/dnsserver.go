@@ -11,13 +11,14 @@ package servers
 import (
 	"errors"
 	"fmt"
-	"github.com/aacebedo/dnsdock/src/utils"
-	"github.com/miekg/dns"
 	"net"
 	"regexp"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/eddiefisher/dnsdock/src/utils"
+	"github.com/miekg/dns"
 )
 
 // Service represents a container and an attached DNS record
@@ -508,9 +509,10 @@ func (s *DNSServer) createSOA() []dns.RR {
 // namely, the query may be longer than "name" and still be a valid prefix
 // query for "name".
 // Examples:
-//   foo.bar.baz.qux is a valid query for bar.baz.qux (longer prefix is okay)
-//   foo.*.baz.qux   is a valid query for bar.baz.qux (wildcards okay)
-//   *.baz.qux       is a valid query for baz.baz.qux (wildcard prefix okay)
+//
+//	foo.bar.baz.qux is a valid query for bar.baz.qux (longer prefix is okay)
+//	foo.*.baz.qux   is a valid query for bar.baz.qux (wildcards okay)
+//	*.baz.qux       is a valid query for baz.baz.qux (wildcard prefix okay)
 func isPrefixQuery(query, name []string) bool {
 	for i, j := len(query)-1, len(name)-1; i >= 0 && j >= 0; i, j = i-1, j-1 {
 		if query[i] != name[j] && query[i] != "*" {

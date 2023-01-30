@@ -10,19 +10,20 @@ package core
 
 import (
 	"fmt"
-	"github.com/aacebedo/dnsdock/src/utils"
-	"gopkg.in/alecthomas/kingpin.v2"
 	"strconv"
+
+	"github.com/eddiefisher/dnsdock/src/utils"
+	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 // CommandLine structure handling parameter parsing
-type CommandLine struct{
-  app *kingpin.Application
+type CommandLine struct {
+	app *kingpin.Application
 }
 
 func NewCommandLine(version string) (res *CommandLine) {
-  res = &CommandLine{}
-  res.app = kingpin.New("dnsdock", "Automatic DNS for docker containers.")
+	res = &CommandLine{}
+	res.app = kingpin.New("dnsdock", "Automatic DNS for docker containers.")
 	res.app.Version(version)
 	res.app.HelpFlag.Short('h')
 	return
