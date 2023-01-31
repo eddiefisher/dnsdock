@@ -468,13 +468,13 @@ func (s *DNSServer) getExpandedID(in string) (out string) {
 		return
 	}
 
+	cr, err := regexp.Compile("^[0-9a-f]+$")
+	if err != nil {
+		return
+	}
+
 	for id := range s.services {
 		if len(id) == 64 {
-			cr, err := regexp.Compile("^[0-9a-f]+$")
-			if err != nil {
-				out = id
-				return
-			}
 			if isHex := cr.MatchString(id); isHex {
 				if strings.HasPrefix(id, in) {
 					out = id
