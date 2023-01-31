@@ -1,6 +1,3 @@
-[![Build Status](https://secure.travis-ci.org/eddiefisher/dnsdock.png)](http://travis-ci.org/eddiefisher/dnsdock)
-
-
 ## dnsdock
 
 DNS server for automatic docker container discovery. Simplified version of
